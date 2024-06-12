@@ -1,6 +1,7 @@
 streamlit
-tensorflow
+tensorflow==2.14.0
 scikit-learn
 seaborn 
 pandas
 matplotlib
+keras==2.14.0
