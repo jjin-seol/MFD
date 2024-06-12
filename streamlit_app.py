@@ -65,7 +65,7 @@ st.write(df)
 if model_dir is not None and test_data is not None:
     # 모델 로드
     # model = tf.keras.models.load_model(model_dir)
-    model = keras.layers.TFSMLayer(model_dir, call_endpoint='serving_default')
+    model = tf.keras.layers.TFSMLayer(model_dir, call_endpoint='serving_default')
     # 데이터 로드
     test_array = np.load(test_data)
     # 예측
