@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+import tensorflow as tf
 
 # 페이지 제목
 st.title("MOTOR DIAGNOSIS DETECTION")
