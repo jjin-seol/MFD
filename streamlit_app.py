@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # 페이지 제목
-st.title("MOTOR DIGNOSIS DETECTION")
+st.title("MOTOR DIAGNOSIS DETECTION")
 
 model = st.selectbox(
     'Choice train model',
