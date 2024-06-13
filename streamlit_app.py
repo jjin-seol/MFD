@@ -17,7 +17,7 @@ st.subheader("SELECT MODEL")
 model = st.selectbox(
     'Choice train model',
     ('LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
-    'LSTM,GRU,CNN+Aesemble','LSTM,GRU,CNN+Attention','Attention(LSTM,GRU,CNN)+Aesemble','Attention(LSTM,GRU,CNN)+Attention','X'), 
+    'LSTM,GRU,CNN+Ensemble','LSTM,GRU,CNN+Attention','Attention(LSTM,GRU,CNN)+Ensemble','Attention(LSTM,GRU,CNN)+Attention','X'), 
 )
 if model == 'LSTM':
     st.markdown('**Choice Model** : :blue[LSTM]')
@@ -40,10 +40,10 @@ if model == 'CNN with Attention':
     model_dir = "cnnA"
 
 if model == 'Attention(LSTM,GRU,CNN)+Aesemble':
-    st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :blue[Aesemble]')
+    st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :blue[Ensemble]')
     model_dir = "comAB"
 if model == 'LSTM,GRU,CNN+Aesemble':
-    st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :blue[Aesemble]')
+    st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :blue[Ensemble]')
     model_dir = "comBB"
 if model == 'LSTM,GRU,CNN+Attention':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :red[Attention]')
@@ -57,9 +57,11 @@ st.subheader("DATA UPLOAD")
 test_data = st.file_uploader('Test data Upload (.npy)', type="npy")
 
 # Test data info
-st.markdown("**test data size = n x 300 x 9**")
+st.markdown("**test data size = n x 300 x 4**")
+st.markdown("seq_len is 300")
+st.markdown("number of feature is 4(Stator Voltage, Stator Current, Rotor Current, Motor Speed")
 data = {
-    'Fault': ['Normal', 'Rotor Current', 'Stator Phase', 'Disconnect Phase','T Rotor Current','T Short Phase'],
+    'Fault': ['Variation of Rotor Excitation Current ', 'Rotor Voltage Excitation disconnection', 'One Phase-to-neutral Short Circuit', 'Two Phase Short Circuit','Open phase','No Fault'],
     'Class': [0,1,2,3,4,5],
 }
 df = pd.DataFrame(data)
