@@ -58,8 +58,8 @@ test_data = st.file_uploader('Test data Upload (.npy)', type="npy")
 
 # Test data info
 st.markdown("**test data size = n x 300 x 4**")
-st.markdown("seq_len is 300")
-st.markdown("number of feature is 4(Stator Voltage, Stator Current, Rotor Current, Motor Speed")
+st.caption("1. seq_len is 300")
+st.caption("2. number of feature is 4 (Stator Voltage, Stator Current, Rotor Current, Motor Speed)")
 data = {
     'Fault': ['Variation of Rotor Excitation Current ', 'Rotor Voltage Excitation disconnection', 'One Phase-to-neutral Short Circuit', 'Two Phase Short Circuit','Open phase','No Fault'],
     'Class': [0,1,2,3,4,5],
