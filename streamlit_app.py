@@ -9,7 +9,7 @@ from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import confusion_matrix
 
 # Title
-st.title("MOTOR DIAGNOSIS DETECTION")
+st.title("MOTOR FAULT DIAGNOSIS")
 
 st.subheader("SELECT MODEL")
 
