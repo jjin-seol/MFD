@@ -17,7 +17,7 @@ st.subheader("SELECT MODEL")
 model = st.selectbox(
     'Choice train model',
     (
-        'LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
+        # 'LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
         'LSTM,GRU,CNN+Ensemble','LSTM,GRU,CNN+Attention','Attention(LSTM,GRU,CNN)+Ensemble','Attention(LSTM,GRU,CNN)+Attention','X'), 
     )
 if model == 'LSTM':
