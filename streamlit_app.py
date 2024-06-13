@@ -11,6 +11,8 @@ from sklearn.metrics import confusion_matrix
 # Title
 st.title("MOTOR DIAGNOSIS DETECTION")
 
+st.subheader("SELECT MODEL")
+
 # Model select & dir setting
 model = st.selectbox(
     'Choice train model',
