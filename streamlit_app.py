@@ -65,7 +65,7 @@ data = {
     'Class': [0,1,2,3,4,5],
 }
 df = pd.DataFrame(data)
-
+st.subheader("CLASS DEFINITION")
 st.write(df)
 
 if model_dir is not None and test_data is not None:
