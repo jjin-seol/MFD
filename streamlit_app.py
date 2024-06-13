@@ -47,7 +47,7 @@ if model == 'LSTM,GRU,CNN+Attention':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :red[Attention]')
     model_dir = "comBA"
 if model == 'Attention(LSTM,GRU,CNN)+Attention':
-    st.markdown('**Choice Model** : :blue[Attention(LSTM,GRU,CNN)] + :red[Attention]')
+    st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :red[Attention]')
     model_dir = "comAA"
 
 # Test data upload
