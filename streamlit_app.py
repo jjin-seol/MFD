@@ -42,16 +42,16 @@ if model == 'CNN with Attention':
 
 if model == 'Attention(LSTM,GRU,CNN)+Ensemble':
     st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :blue[Ensemble]')
-    model_dir = "comAB"
+    model_dir = "MODEL/comAB"
 if model == 'LSTM,GRU,CNN+Ensemble':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :blue[Ensemble]')
-    model_dir = "comBB"
+    model_dir = "MODEL/comBB"
 if model == 'LSTM,GRU,CNN+Attention':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :red[Attention]')
-    model_dir = "comBA"
+    model_dir = "MODEL/comBA"
 if model == 'Attention(LSTM,GRU,CNN)+Attention':
     st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :red[Attention]')
-    model_dir = "comAA"
+    model_dir = "MODEL/comAA"
 
 # Test data upload
 st.subheader("DATA UPLOAD")
