@@ -1,16 +1,17 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import confusion_matrix
-import seaborn as sns
-import matplotlib.pyplot as plt
-import pandas as pd
 
-# 페이지 제목
+# Title
 st.title("MOTOR DIAGNOSIS DETECTION")
 
+# Model select & dir setting
 model = st.selectbox(
     'Choice train model',
     ('LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
@@ -46,12 +47,14 @@ if model == 'LSTM,GRU,CNN+Attention':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :red[Attention]')
     model_dir = "comBA"
 if model == 'Attention(LSTM,GRU,CNN)+Attention':
-    st.markdown('**Choice Model** : :blue[Attention(LSTM,GRU,CNN] + :red[Attention]')
+    st.markdown('**Choice Model** : :blue[Attention(LSTM,GRU,CNN)] + :red[Attention]')
     model_dir = "comAA"
 
-# 테스트 데이터 업로드
+# Test data upload
 st.subheader("DATA UPLOAD")
 test_data = st.file_uploader('Test data Upload (.npy)', type="npy")
+
+# Test data info
 st.markdown("**test data size = n x 300 x 9**")
 data = {
     'Fault': ['Normal', 'Rotor Current', 'Stator Phase', 'Disconnect Phase','T Rotor Current','T Short Phase'],
@@ -59,19 +62,20 @@ data = {
 }
 df = pd.DataFrame(data)
 
-# 테이블 출력
 st.write(df)
-# 모델과 데이터가 모두 업로드되었는지 확인
+
 if model_dir is not None and test_data is not None:
-    # 모델 로드
+    
+    # Model load
     model = tf.keras.models.load_model(model_dir)
-    # model = tf.keras.layers.TFSMLayer(model_dir, call_endpoint='serving_default')
-    # 데이터 로드
+    
+    # Test data load
     test_array = np.load(test_data)
-    # 예측
+
+    # predict
     y_pred = model.predict(test_array)
 
-    # 예측 클래스 출력
+    # output
     st.subheader("PREDICTION CLASS")
     y_pred = np.argmax(y_pred, axis=1)
     y_pred = y_pred.T
@@ -79,6 +83,7 @@ if model_dir is not None and test_data is not None:
 
     st.subheader("EVALUATION")
 
+    # true data upload for evaluation
     ref_data = st.file_uploader("Label data Upload (.npy)", type="npy")
     if ref_data is not None:
         y_test = np.load(ref_data)
