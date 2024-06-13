@@ -39,10 +39,10 @@ if model == 'CNN with Attention':
     st.markdown('**Choice Model** : :blue[CNN] with :red[Attention]')
     model_dir = "cnnA"
 
-if model == 'Attention(LSTM,GRU,CNN)+Aesemble':
+if model == 'Attention(LSTM,GRU,CNN)+Ensemble':
     st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :blue[Ensemble]')
     model_dir = "comAB"
-if model == 'LSTM,GRU,CNN+Aesemble':
+if model == 'LSTM,GRU,CNN+Ensemble':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :blue[Ensemble]')
     model_dir = "comBB"
 if model == 'LSTM,GRU,CNN+Attention':
