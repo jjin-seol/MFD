@@ -16,9 +16,10 @@ st.subheader("SELECT MODEL")
 # Model select & dir setting
 model = st.selectbox(
     'Choice train model',
-    ('LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
-    'LSTM,GRU,CNN+Ensemble','LSTM,GRU,CNN+Attention','Attention(LSTM,GRU,CNN)+Ensemble','Attention(LSTM,GRU,CNN)+Attention','X'), 
-)
+    (
+        # 'LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
+        'LSTM,GRU,CNN+Ensemble','LSTM,GRU,CNN+Attention','Attention(LSTM,GRU,CNN)+Ensemble','Attention(LSTM,GRU,CNN)+Attention','X'), 
+    )
 if model == 'LSTM':
     st.markdown('**Choice Model** : :blue[LSTM]')
     model_dir = "lstmB"
