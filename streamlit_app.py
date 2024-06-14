@@ -25,7 +25,7 @@ st.subheader("SELECT EPOCHS")
 epoch = st.radio(
     'Choice training epochs',
     (
-        '10','50','100'
+        '10','50','100')
     )
 
 # if model == 'LSTM':
