@@ -20,39 +20,53 @@ model = st.selectbox(
         # 'LSTM','LSTM with Attention','GRU', 'GRU with Attention','CNN','CNN with Attention',
         'LSTM,GRU,CNN+Ensemble','LSTM,GRU,CNN+Attention','Attention(LSTM,GRU,CNN)+Ensemble','Attention(LSTM,GRU,CNN)+Attention','X'), 
     )
-if model == 'LSTM':
-    st.markdown('**Choice Model** : :blue[LSTM]')
-    model_dir = "lstmB"
-if model == 'GRU':
-    st.markdown('**Choice Model** : :blue[GRU]' )
-    model_dir = "gruB"
-if model == 'CNN':
-    st.markdown('**Choice Model** : :blue[CNN]' )
-    model_dir = "cnnB"
 
-if model == 'LSTM with Attention':
-    st.markdown('**Choice Model** : :blue[LSTM] with :red[Attention]')
-    model_dir = "lstmA"
-if model == 'GRU with Attention':
-    st.markdown('**Choice Model** : :blue[GRU] with :red[Attention]')
-    model_dir = "gruA"
-if model == 'CNN with Attention':
-    st.markdown('**Choice Model** : :blue[CNN] with :red[Attention]')
-    model_dir = "cnnA"
+st.subheader("SELECT EPOCHS")
+epoch = st.radio(
+    'Choice training epochs',
+    (
+        '10','50','100'
+    )
+
+# if model == 'LSTM':
+#     st.markdown('**Choice Model** : :blue[LSTM]')
+#     model_dir = "lstmB"
+# if model == 'GRU':
+#     st.markdown('**Choice Model** : :blue[GRU]' )
+#     model_dir = "gruB"
+# if model == 'CNN':
+#     st.markdown('**Choice Model** : :blue[CNN]' )
+#     model_dir = "cnnB"
+
+# if model == 'LSTM with Attention':
+#     st.markdown('**Choice Model** : :blue[LSTM] with :red[Attention]')
+#     model_dir = "lstmA"
+# if model == 'GRU with Attention':
+#     st.markdown('**Choice Model** : :blue[GRU] with :red[Attention]')
+#     model_dir = "gruA"
+# if model == 'CNN with Attention':
+#     st.markdown('**Choice Model** : :blue[CNN] with :red[Attention]')
+#     model_dir = "cnnA"
 
 if model == 'Attention(LSTM,GRU,CNN)+Ensemble':
     st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :blue[Ensemble]')
-    model_dir = "MODEL/comAB"
+    model_dir = "comAB"
 if model == 'LSTM,GRU,CNN+Ensemble':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :blue[Ensemble]')
-    model_dir = "MODEL/comBB"
+    model_dir = "comBB"
 if model == 'LSTM,GRU,CNN+Attention':
     st.markdown('**Choice Model** : :blue[LSTM,GRU,CNN] + :red[Attention]')
-    model_dir = "MODEL/comBA"
+    model_dir = "comBA"
 if model == 'Attention(LSTM,GRU,CNN)+Attention':
     st.markdown('**Choice Model** : :red[Attention(LSTM,GRU,CNN)] + :red[Attention]')
-    model_dir = "MODEL/comAA"
+    model_dir = "comAA"
 
+if epoch == '10':
+    epoch_dir = "epoch010"
+if epoch == '50':
+    epoch_dir = "epoch050"
+if epoch == '100':
+    epoch_dir = "epoch100"
 # Test data upload
 st.subheader("DATA UPLOAD")
 test_data = st.file_uploader('Test data Upload (.npy)', type="npy")
@@ -69,10 +83,12 @@ df = pd.DataFrame(data)
 st.subheader("CLASS DEFINITION")
 st.write(df)
 
+model_name = "MODEL/" + epoch_dir + model_dir
+
 if model_dir is not None and test_data is not None:
     
     # Model load
-    model = tf.keras.models.load_model(model_dir)
+    model = tf.keras.models.load_model(model_name)
     
     # Test data load
     test_array = np.load(test_data)
