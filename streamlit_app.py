@@ -83,7 +83,7 @@ df = pd.DataFrame(data)
 st.subheader("CLASS DEFINITION")
 st.write(df)
 
-model_name = "MODEL/" + epoch_dir + model_dir
+model_name = "MODEL/" + epoch_dir + "/" + model_dir
 
 if model_dir is not None and test_data is not None:
     
